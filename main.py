@@ -68,7 +68,7 @@ class ReLU(Layer):
 
 
 def softmax_crossentropy_with_logits(logits, reference_answers):
-    """Compute crossentropy from logits[batch,n_classes] and ids of correct answers"""
+    """Compute crossentropy from logits[batch, n_classes] and ids of correct answers"""
     logits_for_answers = logits[np.arange(len(logits)), reference_answers]
 
     xentropy = - logits_for_answers + np.log(np.sum(np.exp(logits), axis=-1))
@@ -77,7 +77,7 @@ def softmax_crossentropy_with_logits(logits, reference_answers):
 
 
 def grad_softmax_crossentropy_with_logits(logits, reference_answers):
-    """Compute crossentropy gradient from logits[batch,n_classes] and ids of correct answers"""
+    """Compute crossentropy gradient from logits[batch, n_classes] and ids of correct answers"""
     ones_for_answers = np.zeros_like(logits)
     ones_for_answers[np.arange(len(logits)), reference_answers] = 1
 
